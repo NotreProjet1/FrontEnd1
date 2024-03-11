@@ -10,7 +10,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import SearchComponent from './composant/SearchComponent';
-import ImageGalleryPage from './composant/image';
 import ListFormation from './composant/listeformation';
 import './css/themecolor.css';
 import login from './composant/login';
@@ -21,7 +20,7 @@ import Register from './composant/registre';
 import VideoPage from './composant/vedio';
 import publication from './composant/publication';
 import UserProfile from './composant/participant/profil';
-
+import Formation from './composant/formation';
 import HomeFinal from './composant/homefinal';
 const App = () => {
   const [value, setValue] = useState(0);
@@ -79,6 +78,8 @@ const App = () => {
           <MenuItem component={Link} to="/Register">Créer Compte</MenuItem>
           <MenuItem component={Link} to="/CertificatesTable"> liste</MenuItem> 
           <MenuItem component={Link} to="/formation"> demande formation </MenuItem> 
+          <MenuItem component={Link} to="/formationp">  formation </MenuItem> 
+
           <MenuItem component={Link} to="/VideoPage">  VideoPage </MenuItem> 
           <MenuItem component={Link} to="/PublicationPage">  publication </MenuItem> 
           <MenuItem component={Link} to="/HomeFinal">  HomeFinal </MenuItem>  
@@ -93,18 +94,17 @@ const App = () => {
           <Route path="/cart" component={ListFormation} />
          
           <Route path="/VideoPage" component={VideoPage} />
-          
+          <Route path="/Formationp" component={Formation} />
           <Route path="/UserProfile" component={UserProfile} />
           <Route path="/login" component={login} /> 
           <Route path="/listeProfil" component={listeProfil} /> 
           <Route path="/CertificatesTable" component={CertificatesTable} /> 
           <Route path="/Register" component={Register} />    
           <Route path="/publication  " component={publication} />   
-          <Route path="/HomeFinal " component={HomeFinal} /> 
+          <Route path="/HomeFinal" component={HomeFinal} />
         </Switch>
       </div> 
-    <HomeFinal/>
-    <ImageGalleryPage/>
+    
     </Router> 
   );
 };
