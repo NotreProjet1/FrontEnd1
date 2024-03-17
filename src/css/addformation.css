@@ -1,0 +1,76 @@
+/* styles.css */
+
+/* Conteneur principal */
+.add-formation-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+  /* Barre latérale */
+  .sidebar {
+    width: 20%;
+    padding: 20px;
+    border-right: 1px solid #ddd; /* Utilisation d'une teinte plus légère pour la bordure */
+  }
+  
+  /* Contenu principal */
+  .main-content {
+    width: 78%; /* 100% - 20% de la sidebar */
+    padding: 20px;
+  }
+  
+  /* Contrôle de formulaire */
+  .form-control {
+    margin-bottom: 20px;
+  }
+  
+  /* Champ de fichier */
+  .file-input {
+    margin-bottom: 20px;
+  }
+  
+  /* Bouton de soumission */
+  .submit-button {
+    margin-top: 20px;
+  }
+  
+  /* En-tête */
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Libellé du formulaire */
+  .form-label {
+    margin-top: 20px;
+    display: block;
+    font-weight: bold; /* Mettre en gras pour plus de visibilité */
+    color: #333; /* Couleur légèrement plus foncée */
+  }
+  
+  /* Style du bouton Cours */
+  .sidebar-button {
+    margin-bottom: 10px; /* Espace entre les boutons */
+  }
+  
+  /* Style du bouton Ajouter Formation */
+  .submit-button {
+    width: 100%; /* Bouton étendu sur toute la largeur */
+  }
+  
+  /* Style des options de sélection */
+  .MuiMenuItem-root {
+    font-size: 14px; /* Taille de police légèrement plus petite */
+  }
+  
+  /* Style des options de sélection lorsqu'elles sont sélectionnées */
+  .Mui-selected {
+    background-color: #f0f0f0; /* Couleur de fond légèrement plus claire */
+  }
+  
+  /* Style de la bordure des champs de saisie lorsqu'ils sont en focus */
+  .Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #007bff; /* Couleur de la bordure en focus */
+  }
+  

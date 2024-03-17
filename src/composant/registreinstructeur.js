@@ -51,7 +51,7 @@ const Register = () => {
     }
 
     // Envoi de la demande d'inscription au backend
-    const response = await fetch('http://localhost:3001/instructeur/', {
+    const response = await fetch('http://localhost:3001/instructeur/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,9 +61,9 @@ const Register = () => {
         prenom,
         email,
         tel,
-        mots_de_passe: mots_de_passe,
+        mots_de_passe,
         specialite,
-        mots_de_passe: mots_de_passe
+      
       }),
     });
 
@@ -135,7 +135,7 @@ const Register = () => {
   className='mb-3'
   size='sm'
   type='text'  // Changé de 'tel' à 'text'
-  id='tel'
+  id='text'
   label='Téléphone'
   value={tel}
   onChange={(e) => setTel(e.target.value)}
@@ -160,15 +160,15 @@ const Register = () => {
               </MDBRow>
 
               <MDBInput
-                className='mb-3'
-                size='sm'
-                type='mots_de_passe'
-                id='mots_de_passe'
-                label='Mot de passe'
-                value={mots_de_passe}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+  className='mb-3'
+  size='sm'
+  type='password' // Utilisation correcte du type 'password'
+  id='mots_de_passe'
+  label='Mot de passe'
+  value={mots_de_passe}
+  onChange={(e) => setPassword(e.target.value)}
+  required
+/>
             </>
           )}
 
