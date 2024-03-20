@@ -17,7 +17,7 @@ import login from './composant/login';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import listeProfil from './composant/listeProfilPar';
 import CertificatesTable from './composant/liste';
-import AffichFormation from './composant/formation/formationlister';
+import FormationsList from './composant/formation/formationlister';
 import VideoPage from './composant/vedio';
 import publication from './composant/publication';
 import UserProfile from './composant/participant/profil';
@@ -94,7 +94,7 @@ const App = () => {
           <MenuItem component={Link} to="/Register">Registre instructeur</MenuItem>
 
           <MenuItem component={Link} to="/ParticipantRegister">  Participant Register </MenuItem>  
-          <MenuItem component={Link} to="/AffichFormation">AffichFormation</MenuItem>
+          <MenuItem component={Link} to="/FormationsList">AffichFormation</MenuItem>
 
 
           {/* Ajoutez d'autres liens ici si nécessaire */}
@@ -117,7 +117,7 @@ const App = () => {
           <Route path="/HomeFinal" component={HomeFinal} />
           <Route path="/login" component={login} /> 
 
-          <Route path="/AffichFormation" component={AffichFormation} />
+          <Route path="/FormationsList" component={FormationsList} />
 
           <Route path="/newformation" component={AddFormationForm} />
           <Route path="/ParticipantRegister" component={ParticipantRegister} />
