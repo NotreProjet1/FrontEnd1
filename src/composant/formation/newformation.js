@@ -4,6 +4,7 @@ import axios from 'axios'; // Importez axios ici
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../css/addformation.css';
+import { Link } from 'react-router-dom';
 
 const AddFormationForm = () => {
   const [formationData, setFormationData] = useState({
@@ -116,7 +117,7 @@ const handleSubmit = async (e) => {
       <div className="sidebar">
         <h3 className="header">Ajouter les cours correspondants</h3>
         <Button variant="outlined" color="primary" fullWidth className="sidebar-button">
-          Cours 1
+          <Link to={`/AddCours`} className="mt-4 block text-center text-blue-500 hover:underline"> + cours </Link>
         </Button>
       </div>
       <div className="main-content">
@@ -204,7 +205,8 @@ const handleSubmit = async (e) => {
           />
 
           <Button type="submit" variant="contained" color="primary" className="submit-button">
-            Ajouter Formation
+          Ajouter Formation            
+
           </Button>
         </form>
       </div>

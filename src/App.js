@@ -9,6 +9,7 @@ import ListIcon from '@mui/icons-material/List';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Dropdown from 'react-bootstrap/Dropdown'
 
 import SearchComponent from './composant/SearchComponent';
 import ListFormation from './composant/formation/listeformation';
@@ -20,12 +21,20 @@ import CertificatesTable from './composant/liste';
 import FormationsList from './composant/formation/formationlister';
 import VideoPage from './composant/vedio';
 import publication from './composant/publication';
-import UserProfile from './composant/participant/profil';
+
 import FormationPage from './composant/formation/formation';
 import HomeFinal from './composant/homefinal';
 import AddFormationForm from './composant/formation/newformation';
 import ParticipantRegister from './composant/participant/registreparticipant';
 import Register from './composant/registreinstructeur';
+import AddCours from './composant/formation/addCours';
+import AffichCours from './composant/formation/courslister';
+import AddRessources from './composant/formation/addRessource';
+import AffichRessource from './composant/formation/ressourcelister';
+import UserProfile from './composant/UserProfile/UserProfile';
+import ModifierInstructeur from './composant/modifierInstructeur';
+import ChangePassword from './composant/UserProfile/ChangePassword';
+import AccountSettings from './composant/UserProfile/AccountSettings';
 
 const App = () => {
   const [value, setValue] = useState(0);
@@ -59,7 +68,17 @@ const App = () => {
         >
           <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to="/HomeFinal" />
           <BottomNavigationAction label="Search" icon={<SearchIcon />} component={Link} to="/search" />
-          <BottomNavigationAction label="Formations" icon={<ListIcon />} component={Link} to="/formations" />
+          <Dropdown>
+                    <Dropdown.Toggle variant="" id="dropdown-basic">
+                        Categories
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1">Fresh Vegetables</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Fresh Fruits</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">House Cleaning</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
 
           {/* Ajoutez l'icône Edupionner entre Recherche et Notifications */}
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -79,7 +98,15 @@ const App = () => {
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
-        >
+        >   
+         <MenuItem component={Link} to="/ModifierInstructeur"> ModifierInstructeur</MenuItem>  
+         <MenuItem component={Link} to="/AccountSettings"> AccountSettings</MenuItem>  
+         <MenuItem component={Link} to="/UserProfile"> UserProfile</MenuItem> 
+           <MenuItem component={Link} to="/AffichRessource"> AffichRessource</MenuItem> 
+         <MenuItem component={Link} to="/AddRessources"> AddRessources</MenuItem> 
+          <MenuItem component={Link} to="/AffichCours"> AffichCours</MenuItem>
+          
+          <MenuItem component={Link} to="/AddCours"> AddCours</MenuItem> 
           <MenuItem component={Link} to="/UserProfile"> Vers leur profil</MenuItem>
           <MenuItem component={Link} to="/CertificatesTable"> liste</MenuItem> 
           <MenuItem component={Link} to="/formation"> demande formation </MenuItem> 
@@ -120,7 +147,16 @@ const App = () => {
           <Route path="/FormationsList" component={FormationsList} />
 
           <Route path="/newformation" component={AddFormationForm} />
-          <Route path="/ParticipantRegister" component={ParticipantRegister} />
+          <Route path="/ParticipantRegister" component={ParticipantRegister} /> 
+          <Route path="/AddCours" component={AddCours} /> 
+          <Route path="/AffichCours" component={AffichCours} /> 
+          <Route path="/AddRessources" component={AddRessources} /> 
+          <Route path="/AffichRessource" component={AffichRessource} /> 
+          <Route path="/UserProfile" component={UserProfile} />  
+          <Route path="/AccountSettings" component={AccountSettings} />   
+          <Route path="/ModifierInstructeur" component={ModifierInstructeur} />   
+          <Route path="/ChangePassword" component={ChangePassword} />    
+          <Route path="/AccountSettings" component={AccountSettings} />   
 
         </Switch>
       </div> 

@@ -44,7 +44,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/participant/login', {
+      const response = await fetch('http://localhost:3000/participant/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -103,28 +103,19 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/instructeur/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          mots_de_passe: formData.mots_de_passe,
-        }),
+      const response = await axios.post('http://localhost:3000/instructeur/login', {
+        email: formData.email,
+        mots_de_passe: formData.mots_de_passe,
       });
-
+  
       const responseData = await response.json();
-
+  
       console.log('Request data:', { email: formData.email, mots_de_passe: formData.mots_de_passe });
       console.log('Response:', responseData);
-
+  
       if (response.status === 200) {
         console.log('Login successful:', responseData);
-
-        // Stockez le token JWT reçu dans le stockage local ou les cookies
-        localStorage.setItem('token', responseData.token);
-
+  
         // Afficher une notification de succès
         toast.success('Login successful', {
           position: 'top-right',
@@ -134,11 +125,11 @@ const Login = () => {
           pauseOnHover: true,
           draggable: true,
         });
-
-        // Rediriger l'utilisateur vers la page de tableau de bord ou une autre page appropriée
+  
+        // Gérer la suite après la connexion réussie
       } else {
         console.error('Login failed:', response.statusText);
-
+  
         // Afficher une notification d'échec
         toast.error('Login failed', {
           position: 'top-right',
@@ -148,7 +139,7 @@ const Login = () => {
           pauseOnHover: true,
           draggable: true,
         });
-
+  
         // Gérer l'échec de la connexion
       }
     } catch (error) {
@@ -157,6 +148,7 @@ const Login = () => {
       // Gérer les erreurs ici
     }
   };
+  
 
   // Fonction pour changer le design du formulaire en fonction du rôle
   const getFormClassName = () => {
