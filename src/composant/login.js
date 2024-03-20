@@ -40,7 +40,7 @@ const Login = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:3001/participant/login', {
+      const response = await fetch('http://localhost:3000/participant/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -96,38 +96,28 @@ const Login = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:3001/instructeur/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          mots_de_passe: formData.mots_de_passe,
-        }),
+      const response = await axios.post('http://localhost:3000/instructeur/login', {
+        email: formData.email,
+        mots_de_passe: formData.mots_de_passe,
       });
   
-      const responseData = await response.json();
+      const responseData = response.data;
   
-      console.log('Request data:', { email: formData.email, mots_de_passe: formData.mots_de_passe });
       console.log('Response:', responseData);
   
-      if (response.status === 200) {
+      if (response.status === 200 && responseData.success) {
         console.log('Login successful:', responseData);
   
-        // Afficher une notification de succès
-        toast.success('Login successful', {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
+        // Récupérez le token JWT de la réponse
+        const token = responseData.token;
   
-        // Gérer la suite après la connexion réussie
+        // Stockez le token JWT dans le stockage local ou les cookies pour une utilisation ultérieure
+        localStorage.setItem('token', token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        // Redirigez l'utilisateur vers la page suivante ou effectuez toute autre action nécessaire après la connexion réussie
       } else {
-        console.error('Login failed:', response.statusText);
+        console.error('Login failed:', responseData.message);
   
         // Afficher une notification d'échec
         toast.error('Login failed', {
@@ -138,8 +128,6 @@ const Login = () => {
           pauseOnHover: true,
           draggable: true,
         });
-  
-        // Gérer l'échec de la connexion
       }
     } catch (error) {
       console.error('Error during login:', error);
@@ -147,6 +135,7 @@ const Login = () => {
       // Gérer les erreurs ici
     }
   };
+  
 
   // Fonction pour changer le design du formulaire en fonction du rôle
   const getFormClassName = () => {
